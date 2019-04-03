@@ -11,19 +11,18 @@ use App\Form\ProduitType;
 class ProduitController extends AbstractController
 {
     /**
-     * @Route("/produits", name="produit_list")
+     * @Route("/produit", name="produit_list")
      */
     public function list( Request $request, ProduitService $produitService ){
         $query = $request->query->get( 'query' );
         $sort = $request->query->get( 'sort', 'id' );
         if( !empty( $query ) ){
-            $produits = $produitService->search( $query, $sort );
+            $produit = $produitService->search( $query, $sort );
         }else{
-            $produits = $produitService->getAll( $sort );
+            $produit = $produitService->getAll( $sort );
         }
         return $this->render( 'produit/list.html.twig', array(
-            'produits' => $produits,
-            'incomingCounter' => $produitService->countIncoming(),
+            'produit' => $produit,
         ));
     }
     /**

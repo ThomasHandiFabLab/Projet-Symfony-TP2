@@ -6,23 +6,34 @@ use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ProduitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null array(
+            ->add('name', null, array(
                 'label' => false,
                 'attr' => array(
                     'placeholder' => "Nom de l'évènement"
                 ),
             ))
-            ->add('slug', null, array(
-                ''
+            ->add('description', null, array(
+                'attr' => array(
+                    'rows' => 4
+                )
             ))
-            ->add('description')
-            ->add('price')
+            ->add('price', MoneyType::class, array(
+                'label' => 'Prix'
+            ))
+            ->add('categories', null, array(
+                'choice_label' => 'name',
+                'expanded' => true,
+            ))
+            
         ;
     }
 

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos événements - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-4">
+            <a type="button" class="btn btn-outline-success" href="{{ path('produit_list') }}?criteria=price">Par dates les plus récentes</a>
+        </div>
+        <div class="col-4">
+            <a type="button" class="btn btn-outline-warning" href="{{ path('produit_list') }}?criteria=price">Par prix croissant</a>
+        </div>
+        <div class="col-4">
+            <a type="button" class="btn btn-outline-danger"  href="{{ path('produit_list') }}?criteria=capacity">Par capacité d'hébergement</a>
+        </div>
+    </div>
+</div>
+
+<div class="produits">
+
+
+</div>
+
+{% endblock %}

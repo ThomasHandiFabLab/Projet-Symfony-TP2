@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Service;
+
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Produit;
+
 class ProduitService{
     private $om;
     private $repository;
@@ -22,9 +25,6 @@ class ProduitService{
     }
     public function get( $id ){
         return $this->repository->find( $id );
-    }
-    public function countIncoming(){
-        return $this->repository->countIncoming();
     }
     public function search( $term ){
         return $this->repository->search( $term );

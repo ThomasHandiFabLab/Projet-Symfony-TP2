@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -20,44 +20,29 @@ class Produit
     private $id;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir un nom" )
-     * @Assert\Length(
-     *      min = 3,
-     *      minMessage = "Le nom de l'événement doit compter au minimum {{ limit }} caractères"
-     * )
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
     private $slug;
 
     /**
-     * @Assert\NotBlank( message = "Vous devez saisir une description." )
-     * @Assert\Length(
-     *      min = 10,
-     *      minMessage = "La description de l'événement doit compter au minimum {{ limit }} caractères"
-     * )
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
     private $description;
 
     /**
-     * @Assert\Type(
-     *     type="float",
-     *     message="Vous devez saisir un prix valide")
-     * @Assert\NotBlank( message = "Vous devez saisir une description" )
-     * @Assert\Length(
-     *      min = 99,
-     *      max = 1000000000,
-     *      minMessage = "Votre description doit contenir au moins {{ limit }} caractères",
-     *      maxMessage = "Votre description doit contenir au maximum {{ limit }} caractères"
-     * )
      * @ORM\Column(type="float")
      */
     private $price;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $picture;
 
     public function getId(): ?int
     {
@@ -81,7 +66,7 @@ class Produit
         return $this->slug;
     }
 
-    public function setSlug(string $Slug): self
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
@@ -108,6 +93,18 @@ class Produit
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }

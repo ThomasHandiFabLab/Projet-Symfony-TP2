@@ -1,0 +1,120 @@
+html, body{
+    min-height: 100vh;
+    margin: 0;
+}
+
+.navbar-brand img{
+    height: 40px;
+}
+
+.user-area{
+    color: white;
+    font-size: 2rem;
+}
+
+.landing{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/landing.jpg');
+    background-size: cover;
+    color: white;
+}
+
+.landing-container{
+    width: 100%;
+    height: 100%;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing h1{
+    font-size: 4rem;
+}
+
+.landing p{
+    font-size: 1.8rem;
+}
+
+.landing a.btn{
+    font-size: 2rem;
+}
+
+.produits{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.produits .produit{
+    width: calc( 33% - 40px );
+    margin: 20px;
+}
+
+.produits .produit-picture{
+    height: 200px;
+    background-size: cover;
+    background-position: right;
+    position: relative;
+}
+
+.produits .produit-info{
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.3rem;
+}
+
+.produits .badge-pill{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.9rem;
+}
+
+.produit-landing{
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+}
+
+.produit-landing__container{
+    width: 100%;
+    height: 100%;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3.2rem;
+}
+
+.produit-info > div{
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.produit-place{
+    display: flex;
+}
+
+.produit-place i{
+    font-size: 2rem;
+    margin: 5px 10px 5px 0;
+}
+
+.form-produit input, .form-produit textarea, .form-produit select#produit_place{
+    width: 100%;
+}
+
+.form-produit input[type="checkbox"]{
+    width: auto;
+    margin-right: 5px;
+}
+
+.form-produit input[type="checkbox"] + label{
+    margin-right: 5px;
+}
