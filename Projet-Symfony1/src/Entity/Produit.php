@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
-class Product
+class Produit
 {
     /**
      * @ORM\Id()
@@ -24,12 +27,12 @@ class Product
      * )
      * @ORM\Column(type="string", length=255)
      */
-    private $Name;
+    private $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $Slug;
+    private $slug;
 
     /**
      * @Assert\NotBlank( message = "Vous devez saisir une description." )
@@ -39,23 +42,22 @@ class Product
      * )
      * @ORM\Column(type="text")
      */
-    private $Description;
+    private $description;
 
     /**
      * @Assert\Type(
      *     type="float",
-     *     message="Vous devez saisir un prix valide"
+     *     message="Vous devez saisir un prix valide")
      * @Assert\NotBlank( message = "Vous devez saisir une description" )
      * @Assert\Length(
      *      min = 99,
-     *      max = X,
+     *      max = 1000000000,
      *      minMessage = "Votre description doit contenir au moins {{ limit }} caractères",
      *      maxMessage = "Votre description doit contenir au maximum {{ limit }} caractères"
      * )
-     * )
      * @ORM\Column(type="float")
      */
-    private $Price;
+    private $price;
 
     public function getId(): ?int
     {
@@ -64,48 +66,48 @@ class Product
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getSlug(): ?string
     {
-        return $this->Slug;
+        return $this->slug;
     }
 
     public function setSlug(string $Slug): self
     {
-        $this->Slug = $Slug;
+        $this->slug = $slug;
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): self
+    public function setDescription(string $description): self
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getPrice(): ?float
     {
-        return $this->Price;
+        return $this->price;
     }
 
-    public function setPrice(float $Price): self
+    public function setPrice(float $price): self
     {
-        $this->Price = $Price;
+        $this->price = $price;
 
         return $this;
     }

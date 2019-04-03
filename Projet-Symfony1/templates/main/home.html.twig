@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="landing">
+    <div class="landing-container">
+        <h1>SellYourSaoul</h1>
+        <p>Plus d'argent ? Vendez ici jusqu'à votre âme. Ou rachetez en une.</p>
+
+        <a href="{{ path('produit_list') }}" class="btn btn-primary">Découvrir nos produit</a>
+    </div>
+</div>
+
+{% endblock %}  

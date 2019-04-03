@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos événements - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="text-center counter">
+    Il y a {{ incomingCounter }} événements à venir
+</div>
+
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-4">
+            <a type="button" class="btn btn-outline-success" href="{{ path('event_list') }}?criteria=price">Par dates les plus récentes</a>
+        </div>
+        <div class="col-4">
+            <a type="button" class="btn btn-outline-warning" href="{{ path('event_list') }}?criteria=price">Par prix croissant</a>
+        </div>
+        <div class="col-4">
+            <a type="button" class="btn btn-outline-danger"  href="{{ path('event_list') }}?criteria=capacity">Par capacité d'hébergement</a>
+        </div>
+    </div>
+</div>
+
+<div class="events">
+
+    {% for event in events %}
+        <div class="card event">
+            <div class="event-picture" style="background-image: url('{{ event.picture }}');">
+                {% if date( event.startAt ) > date() %}
+                    <span class="badge badge-pill badge-success">A venir</span>
+                {% elseif date( event.endAt ) < date() %}
+                    <span class="badge badge-pill badge-danger">Passé</span>
+                {% else %}
+                    <span class="badge badge-pill badge-warning">En cours</span>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ event.name }}</h5>
+                <div class="event-info">
+                    <span>
+                        <i class="fas fa-euro-sign"></i>
+                        {{ ( event.price ) ? event.price : 'Gratuit' }}
+                    </span>
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ event.place.city }}
+                    </span>
+                </div>
+                <p class="card-text">{{ event.description|slice(0,140) }}...</p>
+                <a href="{{ path( 'event_show', { id: event.id } ) }}" class="btn btn-primary">En savoir plus</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
